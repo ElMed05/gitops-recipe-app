@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "recipe-api.fullname" . }}
+  labels:
+    app: {{ include "recipe-api.name" . }}
 spec:
   replicas: 1
   selector:
@@ -13,8 +15,8 @@ spec:
         app: {{ include "recipe-api.name" . }}
     spec:
       containers:
-        - name: {{ .Chart.Name }}
+        - name: recipe-api
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: 8000
+            - containerPort: {{ .Values.service.port }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}

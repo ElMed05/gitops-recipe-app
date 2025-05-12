@@ -6,12 +6,12 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/deinuser/gitops-recipe-app  # <<-- ÄNDERN
+    repoURL: https://github.com/ElMed05/gitops-recipe-app.git # <<-- ÄNDERN
     targetRevision: main
     path: charts/recipe-api
     helm:
       valueFiles:
-        - values.yaml
+        - values.yaml  # Pfad zum Helm-Werten
   destination:
     server: https://kubernetes.default.svc
     namespace: default

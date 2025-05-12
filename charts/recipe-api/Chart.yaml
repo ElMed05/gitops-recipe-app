@@ -1,6 +1,6 @@
 apiVersion: v2
 name: recipe-api
-description: Helm Chart für Django Recipe API
+description: Helm Chart für Django Recipe API App
 type: application
 version: 0.1.0
-appVersion: "1.0"
+appVersion: "1.0.0"

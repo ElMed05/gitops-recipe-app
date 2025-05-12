@@ -3,9 +3,10 @@ kind: Service
 metadata:
   name: {{ include "recipe-api.fullname" . }}
 spec:
-  type: {{ .Values.service.type }}
   selector:
     app: {{ include "recipe-api.name" . }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: 8000
+    - protocol: TCP
+      port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.port }}
+  type: {{ .Values.service.type }}

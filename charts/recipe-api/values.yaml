@@ -1,8 +1,12 @@
 image:
-  repository: deinuser/recipe-api  # <<-- ÄNDERN
+  repository: recipe-app-api-app
   pullPolicy: IfNotPresent
   tag: latest
 
 service:
   type: ClusterIP
   port: 8000
+
+serviceAccount:
+  create: true
+  name: ""
