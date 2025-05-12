@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recipe-api
+  labels:
+    app: recipe-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recipe-api
+  template:
+    metadata:
+      labels:
+        app: recipe-api
+    spec:
+      containers:
+        - name: recipe-api
+          image: midux/recipe-api:latest  # ← Ändern: Dein Docker-Image (Docker Hub oder lokal per minikube docker-env)
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DJANGO_SETTINGS_MODULE
+              value: app.settings

@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: recipe-api
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/deinuser/gitops-recipe-app  # <<-- ÄNDERN
+    targetRevision: main
+    path: charts/recipe-api
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
